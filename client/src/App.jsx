@@ -29,7 +29,7 @@ const [loadingTasks, setLoadingTasks] = useState(true)
   })
   
   useEffect(() => {
-    fetch('http://localhost:5000/api/tasks')
+    fetch('/api/tasks')
       .then(response => {
         if (!response.ok) {
           throw new Error('Failed to fetch tasks')
@@ -96,8 +96,8 @@ async function saveTask(event) {
 
   try {
     const url = editingTask !== null
-      ? `http://localhost:5000/api/tasks/${editingTask}`
-      : 'http://localhost:5000/api/tasks';
+      ? `/api/tasks/${editingTask}`
+      : '/api/tasks';
 
     const response = await fetch(url, {
       method: editingTask !== null ? 'PUT' : 'POST',
@@ -138,7 +138,7 @@ async function saveTask(event) {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${id}`,
+      `/api/tasks/${id}`,
       { method: 'DELETE' }
     );
 
@@ -162,7 +162,7 @@ async function saveTask(event) {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/tasks/${id}`,
+      `/api/tasks/${id}`,
       {
         method: 'PUT',
         headers: {
